@@ -1,0 +1,19 @@
+{
+  "name": "@tvruta/components",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "author": "Daniel Brodin",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "styled-components": "^4.3.1"
+  },
+  "peerDependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "@types/react": "^16.8.19",
+    "@types/styled-components": "^4.1.16"
+  }
+}

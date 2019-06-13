@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<title>TV-RUTA</title>
+
+<div id="root"></div>
+<script>
+    window.modules = [];
+
+    window.loadModule = function(name, loader, options = {}) {
+        modules.push({ name, loader, options });
+    }
+</script>

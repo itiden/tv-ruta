@@ -1,0 +1,11 @@
+{
+  "name": "@tvruta/app",
+  "version": "1.0.0",
+  "main": "src/index.tsx",
+  "author": "Daniel Brodin",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@tvruta/components": "*"
+  }
+}
