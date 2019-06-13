@@ -2,9 +2,15 @@ const fs = require('fs');
 const path = require('path');
 const ncp = require('ncp');
 const replace = require('replace-in-file');
-const argv = require('minimist')(process.argv.slice(2));
+const program = require('commander');
 
-const name = argv.name;
+program.version('1.0.0');
+program
+  .option('--name', 'Name of the new ruta');
+
+program.parse(process.argv);
+
+const name = program.name;
 
 if (!name) {
   console.log('Provide a name please');
