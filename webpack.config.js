@@ -9,7 +9,6 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const entries = [];
 
 const dirs = fs.readdirSync('./packages');
-const packages = [];
 dirs.forEach(dir => {
   const { name, main, tvruta = null } = require(`./packages/${dir}/package.json`);
 
@@ -29,7 +28,7 @@ module.exports = {
     './packages/app/src/index.tsx'
   ],
   output: {
-    path: path.resolve(__dirname, '../public'),
+    path: path.resolve(__dirname, 'public'),
     filename: '[name].js',
     publicPath: 'http://localhost:8081/',
   },
