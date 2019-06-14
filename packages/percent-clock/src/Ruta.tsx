@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Container } from '@tvruta/components';
 import Lottie, { AnimationItem } from 'lottie-web';
 
-import confetti from './confetti.json';
+import celebration from './celebration.json';
 
 export const Percent = styled.h2`
   margin: 0;
@@ -80,7 +80,7 @@ export function Ruta() {
         renderer: 'svg',
         loop: true,
         autoplay: false,
-        animationData: confetti,
+        animationData: celebration,
       });
     }
 
