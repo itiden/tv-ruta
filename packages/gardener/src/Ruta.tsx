@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { startOfWeek, differenceInWeeks } from 'date-fns';
 import lottie from 'lottie-web';
-import { Title } from '../../components/src';
+import { Title, Content } from '@tvruta/components';
 import flower from './flower.json';
 import styled from 'styled-components';
 
@@ -20,15 +20,12 @@ const Flower = styled.div`
   width: 200px;
   height: 200px;
   position: absolute;
-  bottom: 10px;
-  right: 10px;
+  bottom: 0px;
+  right: 0px;
 `;
 
 const Name = styled.div`
-  position: absolute;
-  top: 150px;
-  left: 40px;
-  font-size: 28px;
+  font-size: 48;
   color: #222;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
@@ -53,10 +50,10 @@ export function Ruta() {
   }, [flowerRef]);
 
   return (
-    <div>
+    <Content>
       <Title>Veckans trädgårdsmästare</Title>
       <Name>{gardener}</Name>
       <Flower ref={flowerRef} />
-    </div>
+    </Content>
   );
 }
