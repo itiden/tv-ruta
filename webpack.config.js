@@ -5,14 +5,33 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const program = require('commander');
+
+function commaSeparatedList(value, dummyPrevious) {
+  return value.split(',');
+}
+
+program
+  .version('1.0.0')
+  .option(
+    '-p, --packages [items]',
+    'only bundle the specified packages. package1,package2',
+    commaSeparatedList
+  );
+
+program.parse(process.argv);
 
 const entries = [];
-
 const dirs = fs.readdirSync('./packages');
+const includeNames = program.packages || [];
 dirs.forEach(dir => {
-  const { name, main, tvruta = null } = require(`./packages/${dir}/package.json`);
+  const { name, main } = require(`./packages/${dir}/package.json`);
+  if (!program.packages) {
+    includeNames.push(name);
+  }
 
-  if (tvruta) {
+  if (!name.includes('@tvruta') && includeNames.includes(name)) {
     entries.push(`./packages/${dir}/${main}`);
   }
 });
@@ -25,7 +44,7 @@ module.exports = {
     'webpack-dev-server/client?http://localhost:8081',
     'webpack/hot/only-dev-server',
     ...entries,
-    './packages/app/src/index.tsx'
+    './packages/app/src/index.tsx',
   ],
   output: {
     path: path.resolve(__dirname, 'public'),
@@ -73,14 +92,14 @@ module.exports = {
           },
         ],
       },
-      // {
-      //   test: /\.css$/,
-      //   use: [MiniCssExtractPlugin.loader, 'css-loader'],
-      // },
-      // {
-      //   test: /\.(png|svg|jpg|gif)$/,
-      //   use: ['file-loader'],
-      // },
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: ['file-loader'],
+      },
     ],
   },
   plugins: [
@@ -91,9 +110,9 @@ module.exports = {
       async: false,
       useTypescriptIncrementalApi: true,
     }),
-    // new MiniCssExtractPlugin({¨
-    //   filename: '[name].css',
-    // }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+    }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: path.resolve(__dirname, 'template.html'),
