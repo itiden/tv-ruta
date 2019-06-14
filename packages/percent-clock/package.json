@@ -4,10 +4,11 @@
   "main": "src/index.tsx",
   "license": "MIT",
   "dependencies": {
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "@tvruta/app": "*",
     "@tvruta/components": "*",
-    "@tvruta/app": "*"
+    "lottie-web": "^5.5.5",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   },
   "devDependencies": {
     "@types/react": "^16.8.19",

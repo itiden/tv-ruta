@@ -51,8 +51,6 @@ export function Ruta() {
         }
         const date = `${today.getFullYear()}-${mm}-${dd}`;
 
-        console.log(date);
-
         const response = await axios.get(`https://api.github.com/search/repositories?sort=stars&order=desc&q=language:javascript&q=language:typescript&q=created:${date}`);
         setRepositories(response.data.items.slice(0, 8));
       }

@@ -8,7 +8,8 @@ import md5 from 'md5';
 
 const startDate = new Date('2019-02-13');
 const startWeek = startOfWeek(startDate);
-const gardeners: { name: string; email: string }[] = [
+type Gardener = { name: string; email: string };
+const gardeners: Gardener[] = [
   { name: 'Andreas', email: 'andreas@itiden.se' },
   { name: 'Albert', email: 'albert@itiden.se' },
   { name: 'Jens', email: 'jens@itiden.se' },
@@ -41,17 +42,38 @@ const Avatar: React.FC<{ email: string }> = ({ email }) => {
   return <AvatarCircle bg={gravatar} />;
 };
 
-const Gardener = styled.div`
+const Content = styled.div`
   display: flex;
   align-items: center;
   margin-top: ${p => p.theme.space['8']};
 `;
 
 export function Ruta() {
-  const now = new Date();
-  const weeksPassed: number = differenceInWeeks(now, startWeek);
-  const gardener = gardeners[weeksPassed % gardeners.length];
+  const [gardener, setGardener] = React.useState<Gardener | null>(null);
+  const timeout = React.useRef<number | null>(null);
   const flowerRef = React.useRef<HTMLDivElement | null>(null);
+
+  React.useEffect(() => {
+    function updateGardener() {
+      const now = new Date();
+      const weeksPassed: number = differenceInWeeks(now, startWeek);
+      const newGardener = gardeners[weeksPassed % gardeners.length];
+
+      setGardener(newGardener);
+
+      timeout.current = window.setTimeout(() => {
+        updateGardener();
+      }, 60 * 1000);
+    }
+
+    updateGardener();
+
+    return () => {
+      if (timeout.current) {
+        window.clearTimeout(timeout.current);
+      }
+    };
+  }, []);
 
   React.useEffect(() => {
     if (flowerRef.current) {
@@ -68,12 +90,14 @@ export function Ruta() {
   return (
     <Container>
       <Title>Veckans trädgårdsmästare</Title>
-      <Gardener>
-        <Avatar email={gardener.email} />
-        <Text size="4xl" fontWeight="bold">
-          {gardener.name}
-        </Text>
-      </Gardener>
+      {gardener && (
+        <Content>
+          <Avatar email={gardener.email} />
+          <Text size="4xl" fontWeight="bold">
+            {gardener.name}
+          </Text>
+        </Content>
+      )}
       <Flower ref={flowerRef} />
     </Container>
   );
