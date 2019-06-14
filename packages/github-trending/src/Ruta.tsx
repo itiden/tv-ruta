@@ -62,7 +62,7 @@ export function Ruta() {
     }
     fetchRepositories();
   }, []);
-  console.log({ repositories });
+
   return (
     <Container>
       <Title>Github Trending</Title>
