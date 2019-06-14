@@ -18,18 +18,11 @@ const gardeners: { name: string; email: string }[] = [
 ];
 
 const Flower = styled.div`
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   position: absolute;
-  bottom: 0px;
-  right: 0px;
-`;
-
-const Name = styled.div`
-  font-size: 48;
-  color: #222;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
+  bottom: -40px;
+  right: -40px;
 `;
 
 const AvatarCircle = styled.div<{ bg: string }>`
