@@ -2,6 +2,7 @@ import * as React from 'react';
 import axios from 'axios';
 import { useAppState } from '@tvruta/app';
 import styled from 'styled-components';
+import { Title, Container } from '@tvruta/components';
 
 interface RepositoryProps {
   id: string;
@@ -9,12 +10,6 @@ interface RepositoryProps {
   forks_count: number;
   stargazers_count: number;
 }
-
-const Wrapper = styled.div`
-  height: 100%;
-  padding: 5px 20px;
-  background-color: #f1f1f1;
-`;
 
 const Table = styled.table`
   width: 100%;
@@ -25,12 +20,17 @@ const Tr = styled.tr`
 `;
 
 const Th = styled.th`
+  color: #222;
   font-size: 18px;
   text-align: left;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
 `;
 
 const Td = styled.td`
+  color: #222;
   font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
 `;
 
 export function Ruta() {
@@ -54,7 +54,7 @@ export function Ruta() {
         console.log(date);
 
         const response = await axios.get(`https://api.github.com/search/repositories?sort=stars&order=desc&q=language:javascript&q=language:typescript&q=created:${date}`);
-        setRepositories(response.data.items.slice(0, 10));
+        setRepositories(response.data.items.slice(0, 8));
       }
       catch (e) {
         console.log({ e });
@@ -64,8 +64,8 @@ export function Ruta() {
   }, []);
   console.log({ repositories });
   return (
-    <Wrapper>
-      <h2>Github Trending</h2>
+    <Container>
+      <Title>Github Trending</Title>
       <Table>
         <thead>
           <Tr>
@@ -84,6 +84,6 @@ export function Ruta() {
           ))}
         </tbody>
       </Table>
-    </Wrapper>
+    </Container>
   );
 }
