@@ -6,6 +6,9 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "@tvruta/components": "*"
-  }
+    "@tvruta/components": "*",
+    "packery": "^2.1.2",
+    "styled-components": "^4.3.1"
+  },
+  "devDependencies": {}
 }

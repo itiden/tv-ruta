@@ -1,0 +1,21 @@
+{
+  "name": "gardener",
+  "version": "1.0.0",
+  "main": "src/index.tsx",
+  "license": "MIT",
+  "dependencies": {
+    "@tvruta/app": "*",
+    "@tvruta/components": "*",
+    "date-fns": "^1.30.1",
+    "lottie-web": "^5.5.5",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "styled-components": "^4.3.1"
+  },
+  "devDependencies": {
+    "@types/date-fns": "^2.6.0",
+    "@types/react": "^16.8.19",
+    "@types/react-dom": "^16.8.4",
+    "@types/styled-components": "^4.1.16"
+  }
+}

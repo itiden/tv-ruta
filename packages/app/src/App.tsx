@@ -1,18 +1,11 @@
 import * as React from 'react';
-import { Grid } from '@tvruta/components';
+import { getModules } from './services/modules';
+import { Grid } from './components/Grid/Grid';
 
 interface AppProps {}
 
-interface Module {
-  name: string;
-  loader(): React.ReactElement;
-  options: {
-    grid: [number, number];
-  };
-}
-
 export function App(props: AppProps) {
-  const modules = (window as any).modules as Module[];
+  const modules = getModules();
 
   const alertMessage = (message: string) => {
     alert(message);
@@ -20,13 +13,7 @@ export function App(props: AppProps) {
 
   return (
     <Context.Provider value={{ alert: alertMessage }}>
-      <div>
-        {modules.map(({ name, loader: Component, options }) => (
-          <Grid key={name} grid={options.grid}>
-            <Component />
-          </Grid>
-        ))}
-      </div>
+      <Grid modules={modules} />
     </Context.Provider>
   );
 }

@@ -12,8 +12,5 @@
   "devDependencies": {
     "@types/react": "^16.8.19",
     "@types/react-dom": "^16.8.4"
-  },
-  "tvruta": {
-    "grid": [2, 1]
   }
 }
