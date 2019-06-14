@@ -5,7 +5,7 @@
 <script>
     window.modules = [];
 
-    window.loadModule = function(name, loader, options = {}) {
-        modules.push({ name, loader, options });
+    window.loadModule = function(name, component, options = {}) {
+        modules.push({ name, component, options });
     }
 </script>
