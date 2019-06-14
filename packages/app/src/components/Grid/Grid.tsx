@@ -19,6 +19,7 @@ const GridItem = styled.div<GridItemProps>`
   border: 1px solid #ccc;
   box-sizing: border-box;
   position: absolute;
+  overflow: hidden;
 `;
 
 const GridContent = styled.div`

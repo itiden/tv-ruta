@@ -26,13 +26,15 @@ const entries = [];
 const dirs = fs.readdirSync('./packages');
 const includeNames = program.packages || [];
 dirs.forEach(dir => {
-  const { name, main } = require(`./packages/${dir}/package.json`);
-  if (!program.packages) {
-    includeNames.push(name);
-  }
+  if (fs.existsSync(`./packages/${dir}/package.json`)) {
+    const { name, main } = require(`./packages/${dir}/package.json`);
+    if (!program.packages) {
+      includeNames.push(name);
+    }
 
-  if (!name.includes('@tvruta') && includeNames.includes(name)) {
-    entries.push(`./packages/${dir}/${main}`);
+    if (!name.includes('@tvruta') && includeNames.includes(name)) {
+      entries.push(`./packages/${dir}/${main}`);
+    }
   }
 });
 
