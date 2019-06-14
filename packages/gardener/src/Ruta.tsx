@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { startOfWeek, differenceInWeeks } from 'date-fns';
 import lottie from 'lottie-web';
-import { Title, Content } from '@tvruta/components';
+import { Title, Container } from '@tvruta/components';
 import flower from './flower.json';
 import styled from 'styled-components';
 
@@ -50,10 +50,10 @@ export function Ruta() {
   }, [flowerRef]);
 
   return (
-    <Content>
+    <Container>
       <Title>Veckans trädgårdsmästare</Title>
       <Name>{gardener}</Name>
       <Flower ref={flowerRef} />
-    </Content>
+    </Container>
   );
 }
