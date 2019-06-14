@@ -7,7 +7,7 @@ export const Percent = styled.h2`
   color: #4F4F4F;
   font-size: 83px;
   text-transform: uppercase;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
 `;
 
 const StyledContainer = styled(Container)`

@@ -24,13 +24,13 @@ const Th = styled.th`
   font-size: 18px;
   text-align: left;
   font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
 `;
 
 const Td = styled.td`
   color: #222;
   font-size: 18px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
 `;
 
 export function Ruta() {
