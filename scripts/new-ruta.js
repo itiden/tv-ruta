@@ -4,11 +4,10 @@ const ncp = require('ncp');
 const replace = require('replace-in-file');
 const program = require('commander');
 
-program.version('1.0.0');
 program
-  .option('--name', 'Name of the new ruta');
-
-program.parse(process.argv);
+  .version('1.0.1')
+  .option('-n, --name [name]', 'Name of the new ruta')
+  .parse(process.argv);
 
 const name = program.name;
 

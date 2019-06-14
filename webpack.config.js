@@ -91,7 +91,7 @@ module.exports = {
       async: false,
       useTypescriptIncrementalApi: true,
     }),
-    // new MiniCssExtractPlugin({
+    // new MiniCssExtractPlugin({¨
     //   filename: '[name].css',
     // }),
     new HtmlWebpackPlugin({
