@@ -16,7 +16,7 @@ const GridItem = styled.div<GridItemProps>`
   width: ${p => p.width}px;
   height: ${p => p.height}px;
   position: relative;
-  border: 1px solid #ccc;
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
   position: absolute;
   overflow: hidden;
@@ -77,8 +77,8 @@ function useGridSize(): GridSize {
 
   const columns = width / minItemSize;
   const rows = height / minItemSize;
-  const itemWidth = Math.round(width / Math.round(columns));
-  const itemHeight = Math.round(height / Math.round(rows));
+  const itemWidth = Math.floor(width / Math.round(columns));
+  const itemHeight = Math.floor(height / Math.round(rows));
 
   return [[columns, rows], itemWidth, itemHeight];
 }

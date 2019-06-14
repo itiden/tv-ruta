@@ -32,7 +32,7 @@ dirs.forEach(dir => {
       includeNames.push(name);
     }
 
-    if (!name.includes('@tvruta') && includeNames.includes(name)) {
+    if (!name.includes('@tvruta') && !name.includes('example') && includeNames.includes(name)) {
       entries.push(`./packages/${dir}/${main}`);
     }
   }
