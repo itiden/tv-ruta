@@ -51,13 +51,17 @@ export function Ruta() {
         }
         const date = `${today.getFullYear()}-${mm}-${dd}`;
 
-        const response = await axios.get(`https://api.github.com/search/repositories?sort=stars&order=desc&q=language:javascript&q=language:typescript&q=created:${date}`);
-        setRepositories(response.data.items.slice(0, 8));
+        const response = await axios.get(`https://api.github.com/search/repositories?sort=stars&order=desc&per_page=8&q=language:javascript&q=language:typescript&q=created:${date}`);
+        setRepositories(response.data.items);
       }
       catch (e) {
         console.log({ e });
       }
     }
+
+    window.setInterval(() => {
+      fetchRepositories();
+    }, 10 * 60 * 1000);
     fetchRepositories();
   }, []);
 
