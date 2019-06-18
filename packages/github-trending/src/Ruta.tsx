@@ -30,6 +30,9 @@ const Th = styled.th`
 const Td = styled.td`
   color: #222;
   font-size: 18px;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
 `;
 

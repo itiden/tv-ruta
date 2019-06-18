@@ -1,0 +1,16 @@
+{
+  "name": "clock",
+  "version": "1.0.0",
+  "main": "src/index.tsx",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "@tvruta/components": "*",
+    "@tvruta/app": "*"
+  },
+  "devDependencies": {
+    "@types/react": "^16.8.19",
+    "@types/react-dom": "^16.8.4"
+  }
+}
