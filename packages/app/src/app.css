@@ -4,3 +4,14 @@ html, body {
     font-size: 16px;
     font-family: 'Roboto', Helvetica Neue, sans-serif;
 }
+
+body {
+    background: #f2f2f2;
+}
+
+
+@media (-webkit-prefers-color-scheme: dark) {
+    body {
+        background: #222;
+    }
+}

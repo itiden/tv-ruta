@@ -16,10 +16,15 @@ const GridItem = styled.div<GridItemProps>`
   width: ${p => p.width}px;
   height: ${p => p.height}px;
   position: relative;
-  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.2);
+  /* box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.2); */
   box-sizing: border-box;
   position: absolute;
   overflow: hidden;
+
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 5px 4px -4px rgba(0, 0, 0, 0.2);
+  /* margin: 8px; */
 `;
 
 const GridContent = styled.div`
@@ -36,7 +41,7 @@ export const Grid: React.FC<GridProps> = ({ modules }) => {
     if (ref.current && !pckry.current) {
       pckry.current = new Packery(ref.current, {
         itemSelector: '.grid-item',
-        gutter: 0,
+        gutter: 8,
       });
     }
     if (pckry.current) {
@@ -73,12 +78,13 @@ type GridSize = [Columns, number, number];
 
 function useGridSize(): GridSize {
   const { width, height } = useWindowSize();
-  const minItemSize = 350;
+  const minItemWidth = 350;
+  const minItemHeight = 300;
 
-  const columns = width / minItemSize;
-  const rows = height / minItemSize;
-  const itemWidth = Math.floor(width / Math.round(columns));
-  const itemHeight = Math.floor(height / Math.round(rows));
+  const columns = Math.floor(width / minItemWidth);
+  const rows = Math.floor(height / minItemHeight);
+  const itemWidth = Math.floor(width / Math.round(columns)) - 8;
+  const itemHeight = Math.floor(height / Math.round(rows)) - 8;
 
   return [[columns, rows], itemWidth, itemHeight];
 }
